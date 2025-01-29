@@ -48,10 +48,6 @@ const AddPet = () => {
         e.preventDefault();
 
         const { name, breed, age, gender, location, photo } = pet;
-        if (!name || !breed || !age || !gender || !location || !photo) {
-            alert('Please fill out all the fields.');
-            return;
-        }
 
         try {
             const response = await axios.post('http://localhost:3000/pet/pets', {
@@ -97,7 +93,7 @@ const AddPet = () => {
                 <input
                     type="text"
                     name="breed"
-                    value={pet.breed} // Use pet state here
+                    value={pet.breed} 
                     onChange={handleChange}
                     required
                     style={{ width: '100%', padding: '8px', margin: '5px 0', borderRadius: '5px', border: '1px solid #ccc' }}
@@ -109,7 +105,7 @@ const AddPet = () => {
                 <input
                     type="number"
                     name="age"
-                    value={pet.age} // Use pet state here
+                    value={pet.age} 
                     onChange={handleChange}
                     required
                     style={{ width: '100%', padding: '8px', margin: '5px 0', borderRadius: '5px', border: '1px solid #ccc' }}
@@ -120,7 +116,7 @@ const AddPet = () => {
                 <label>Gender:</label>
                 <select
                     name="gender"
-                    value={pet.gender} // Use pet state here
+                    value={pet.gender} 
                     onChange={handleChange}
                     required
                     style={{ width: '100%', padding: '8px', margin: '5px 0', borderRadius: '5px', border: '1px solid #ccc' }}

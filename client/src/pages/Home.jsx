@@ -1,4 +1,5 @@
 import React from 'react'
+import PetList from './PetList'
 
 const Home = () => {
   return (
@@ -24,6 +25,8 @@ const Home = () => {
           Find your furry companion or give a home to pets in need. Explore available pets below.
         </p>
       </div>
+
+      <PetList/>
     </div>
   )
 }
