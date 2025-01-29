@@ -57,9 +57,26 @@ const addPet = async (req, res) => {
 
 const submitApplication = async (req, res) => {
     try {
-        console.log("hiii");
+        const { petId, adopterName, email } = req.body;
+
+        const application = new Application(req.body);
+        await application.save();
+        await Pet.findByIdAndUpdate(petId, { status: "Adopted" });
+        res.status(201).json(application);
     } catch (error) {
         res.status(500).json({message: error.message});
+    }
+};
+
+const getApplicationById = async (req, res) => {
+    try{
+        const application = await Application.findById(req.params.id);
+        if(!application){
+            return res.status(404).json({message: "Application Not Found"});
+        }
+        res.json(application);
+    } catch (error) {
+        res.status(500).json({error: error.message});
     }
 };
 
@@ -68,6 +85,7 @@ module.exports = {
     getAllPets,
     getPetById,
     addPet,
-    submitApplication
+    submitApplication,
+    getApplicationById
 }
 
